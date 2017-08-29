@@ -1,0 +1,37 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.6.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-integration')
+	// https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-sftp
+	compile group: 'org.springframework.integration', name: 'spring-integration-sftp'
+	// https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-file
+	compile group: 'org.springframework.integration', name: 'spring-integration-file'
+	// https://mvnrepository.com/artifact/org.apache.sshd/sshd-core
+	compile group: 'org.apache.sshd', name: 'sshd-core', version: '1.6.0'
+	// https://mvnrepository.com/artifact/commons-codec/commons-codec
+	compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
